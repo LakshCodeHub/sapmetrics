@@ -13,20 +13,28 @@ import Button from '@mui/material/Button';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 const DataGridContainer = styled("div")({
-    height: '40%',
+    height: '42%',
     width: "100%"
 });
 
-const TableToolBar = styled(Paper)({
-    maxWidth: 400,
-    background: 'inherit',
-    boxShadow: 'none',
-    border: '1px solid #aab7b8',
-    borderRadius: 'unset'
-});
+const TableToolBar = styled(Paper)(
+    ({ theme }) => ({
+        width: 300,
+        [theme.breakpoints.up('xs')]: {
+            width: '100%'
+        },
+        [theme.breakpoints.up('sm')]: {
+            width: '320px'
+        },
+        background: 'inherit',
+        boxShadow: 'none',
+        border: '1px solid #aab7b8',
+        borderRadius: 'unset'
+    })
+);
 
 const RowDetailContainer = styled("div")({
-    height: '40%',
+    height: '42%',
     background: 'white',
     padding: '10px',
     overflow: 'scroll',
@@ -105,28 +113,31 @@ const columns = [
         width: 200
     },
     {
+        field: "errorPercentage",
+        headerName: "Error Percentage",
+        type: "number",
+        width: 200,
+        renderCell: (params) => {
+            return params.value ? params.value + "%" : null;
+        },
+    },
+    {
         field: "successRateDefinition",
         headerName: "Success Rate Definition ",
         type: "number",
-        width: 200
-    },
-    {
-        field: "actualSuccessRate",
-        headerName: "Actual Success Rate",
-        type: "number",
-        width: 200
+        width: 200,
+        renderCell: (params) => {
+            return params.value ? params.value + "%" : null;
+        },
     },
     {
         field: "varianceToSLA",
         headerName: "Variance to SLA (SRD)",
         type: "number",
-        width: 200
-    },
-    {
-        field: "performanceBaseline",
-        headerName: "Performance Baseline ",
-        type: "number",
-        width: 200
+        width: 200,
+        renderCell: (params) => {
+            return params.value ? params.value + "%" : null;
+        },
     },
     {
         field: "rtt95Th",
@@ -135,22 +146,22 @@ const columns = [
         width: 200
     },
     {
-        field: "varianceTo95th",
-        headerName: "Variance to 95th",
-        type: "number",
-        width: 200
-    },
-    {
         field: "volumePerDay",
-        headerName: "Volume per day",
+        headerName: "Average Volume per day",
         type: "number",
         width: 200
     },
     {
-        field: "tps",
-        headerName: "TPS",
+        field: "rountTripTimeWithStargate",
+        headerName: "Round Trip Time with Stargate",
         type: "number",
-        width: 160
+        width: 200
+    },
+    {
+        field: "totalRountTripTime",
+        headerName: "Total Round trip time",
+        type: "number",
+        width: 200
     },
     {
         field: "subCategory",
@@ -180,11 +191,6 @@ const columns = [
     {
         field: "actionPlan",
         headerName: "Action Plan",
-        width: 200
-    },
-    {
-        field: "actionPlan",
-        headerName: "Action Plan",
         minWidth: 200
     },
 ];
@@ -194,25 +200,39 @@ const defaultRows = [
         id: 1,
         productName: "Identity and Access | Eligibility",
         apiName: "PlanDetails OBAPI",
-        optumApi: 'Provider Search',
-        successRateDefinition: 99.5,
-        actualSuccessRate: 99.25,
-        varianceToSLA: 0.25,
-        performanceBaseline: 400,
-        rtt95Th: 300,
-        varianceTo95th: -100,
-        volumePerDay: 200000,
-        tps: 10,
+        optumApi: '',
+        errorPercentage: 1.01,
+        successRateDefinition: 0.25,
+        varianceToSLA: 0.76,
+        rtt95Th: 1492.804,
+        volumePerDay: 171333,
+        rountTripTimeWithStargate: 1542.804,
+        totalRountTripTime: null,
         subCategory: "OBAPI",
-        optumPartner: "Devender Kumar",
+        optumPartner: "Devender Kumar & Josh Nair",
+        optumPartnerEmail: "",
         oDPartner: "Kris Kohlstedt",
-        actionPlan: "Some comments here..."
+        oDPartnerEmail: "",
+        actionPlan: "We need Kis K and the core team from Brian to attend this meeting"
     },
     {
         id: 2,
         productName: "Platform | Advocacy",
         apiName: "Omni Chat",
-        actionPlan: ""
+        optumApi: '',
+        errorPercentage: null,
+        successRateDefinition: null,
+        varianceToSLA: null,
+        rtt95Th: null,
+        volumePerDay: null,
+        rountTripTimeWithStargate: null,
+        totalRountTripTime: null,
+        subCategory: "Optum Omni",
+        optumPartner: "",
+        optumPartnerEmail: "satwant.singh@optum.com",
+        oDPartner: "Charles Lee",
+        oDPartnerEmail: "",
+        actionPlan: "Genyssis architect and the api in question to be forwarded by Kiran"
     },
     {
         id: 3,
@@ -331,29 +351,31 @@ export default function Content() {
     }
     return (
         <React.Fragment>
-            <Typography variant="h3" component="h1" sx={{ fontSize: 30, pb: 3 }}>
-                Analytics
-            </Typography>
-            <TableToolBar>
-                <Grid container alignItems="center">
-                    <Grid item sx={{ padding: '6px', px: 1 }}>
-                        <SearchIcon color="inherit" sx={{ display: 'block' }} />
+            <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap'}}>
+                <Typography variant="h5" component="h1" sx={{ fontSize: 25 }}>
+                    Analytics
+                </Typography>
+                <TableToolBar>
+                    <Grid container alignItems="center">
+                        <Grid item sx={{ padding: '6px', px: 1 }}>
+                            <SearchIcon color="inherit" sx={{ display: 'block' }} />
+                        </Grid>
+                        <Grid item xs>
+                            <TextField
+                                fullWidth
+                                placeholder="Search table"
+                                InputProps={{
+                                    disableUnderline: true,
+                                    sx: { fontSize: 'default' },
+                                }}
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                variant="standard"
+                            />
+                        </Grid>
                     </Grid>
-                    <Grid item xs>
-                        <TextField
-                            fullWidth
-                            placeholder="Search table"
-                            InputProps={{
-                                disableUnderline: true,
-                                sx: { fontSize: 'default' },
-                            }}
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            variant="standard"
-                        />
-                    </Grid>
-                </Grid>
-            </TableToolBar>
+                </TableToolBar>
+            </Box>
             <DataGridContainer sx={{ my: 3 }}>
                 <DataGrid
                     rows={filteredRows}

@@ -3,7 +3,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import Navigator from './navigator';
 import Header from './header';
 
 let theme = createTheme({
@@ -149,15 +148,12 @@ theme = {
     },
 };
 
-const drawerWidth = 256;
-
 interface LayoutProps {
     children: React.ReactNode
 }
 
 function Layout(props: LayoutProps) {
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -165,28 +161,20 @@ function Layout(props: LayoutProps) {
 
     return (
         <ThemeProvider theme={theme}>
-            <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+            <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: '#eaeff1', }}>
                 <CssBaseline />
-                <Box
-                    component="nav"
-                    sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-                >
-                    {isSmUp ? null : (
-                        <Navigator
-                            PaperProps={{ style: { width: drawerWidth } }}
-                            variant="temporary"
-                            open={mobileOpen}
-                            onClose={handleDrawerToggle}
-                        />
-                    )}
-                    <Navigator
-                        PaperProps={{ style: { width: drawerWidth } }}
-                        sx={{ display: { sm: 'block', xs: 'none' } }}
-                    />
-                </Box>
                 <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    <Header onDrawerToggle={handleDrawerToggle} />
-                    <Box component="main" sx={{ flex: 1, py: {xs: 4, md: 6}, px: {xs: 2, md: 4}, bgcolor: '#eaeff1' }}>
+                    <Header />
+                    <Box 
+                        component="main" 
+                        sx={{ 
+                            flex: 1, 
+                            pt: {xs: 4, md: 4}, 
+                            px: {xs: 2, md: 4}, 
+                            width: { xs: '100%', md: '90%', lg: '80%' },
+                            margin: '0 auto'
+                        }}
+                    >
                         {props.children}
                     </Box>
                 </Box>
