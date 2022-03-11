@@ -13,8 +13,8 @@ import Button from '@mui/material/Button';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 const DataGridContainer = styled("div")({
-    height: '42%',
-    width: "100%"
+    //height: '340px',
+    width: "100%" 
 });
 
 const TableToolBar = styled(Paper)(
@@ -380,10 +380,13 @@ export default function Content() {
                 <DataGrid
                     rows={filteredRows}
                     columns={columns}
+                   pageSize={6}
+                    rowsPerPageOptions={[6]}
                     density="compact"
                     autoPageSize
                     checkboxSelection
                     onStateChange={handleGridStateChange}
+                    autoHeight
                 />
 
             </DataGridContainer>

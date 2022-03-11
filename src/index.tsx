@@ -14,7 +14,7 @@ ReactDOM.render(
       <Layout>
           <Router>
               <Routes>
-                  <Route path="/" element={<ApiList />} />
+                  <Route path="/sapmetrics" element={<ApiList />} />
               </Routes>
           </Router>
       </Layout>

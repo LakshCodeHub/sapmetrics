@@ -11,7 +11,7 @@ export default function Header() {
                 <Toolbar>
                     <Grid container spacing={1} alignItems="center">
                         <Grid item>
-                            <Typography>API Metrics</Typography>
+                            <Typography>Stability Analysis Performance</Typography>
                         </Grid>
                     </Grid>
                 </Toolbar>
