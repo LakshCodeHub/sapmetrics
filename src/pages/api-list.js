@@ -353,7 +353,7 @@ export default function Content() {
         <React.Fragment>
             <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap'}}>
                 <Typography variant="h5" component="h1" sx={{ fontSize: 25 }}>
-                    Analytics
+                    Stabi
                 </Typography>
                 <TableToolBar>
                     <Grid container alignItems="center">
