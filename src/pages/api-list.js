@@ -98,99 +98,132 @@ const ModalBox = styled(Box)(
 
 const columns = [
     {
-        field: "productName",
-        headerName: "Product",
+        field: "problemStatement",
+        headerName: "Problem Statement",
         minWidth: 250
     },
     {
-        field: "apiName",
-        headerName: "API Name",
+        field: "memberExperience",
+        headerName: "Member Experience",
         width: 200
     },
     {
-        field: "optumApi",
-        headerName: "Optum API",
+        field: "capability",
+        headerName: "Capability",
         width: 200
     },
+    // {
+    //     field: "errorPercentage",
+    //     headerName: "Error Percentage",
+    //     type: "number",
+    //     width: 200,
+    //     renderCell: (params) => {
+    //         return params.value ? params.value + "%" : null;
+    //     },
+    // },
     {
-        field: "errorPercentage",
-        headerName: "Error Percentage",
-        type: "number",
-        width: 200,
-        renderCell: (params) => {
-            return params.value ? params.value + "%" : null;
-        },
-    },
-    {
-        field: "successRateDefinition",
-        headerName: "Success Rate Definition ",
-        type: "number",
-        width: 200,
-        renderCell: (params) => {
-            return params.value ? params.value + "%" : null;
-        },
-    },
-    {
-        field: "varianceToSLA",
-        headerName: "Variance to SLA (SRD)",
-        type: "number",
-        width: 200,
-        renderCell: (params) => {
-            return params.value ? params.value + "%" : null;
-        },
-    },
-    {
-        field: "rtt95Th",
-        headerName: "95th RTT",
+        field: "currentState",
+        headerName: "Current State(Miliseconds)",
         type: "number",
         width: 200
     },
     {
-        field: "volumePerDay",
-        headerName: "Average Volume per day",
+        field: "targetState",
+        headerName: "Target State(Miliseconds)",
         type: "number",
         width: 200
     },
     {
-        field: "rountTripTimeWithStargate",
-        headerName: "Round Trip Time with Stargate",
+        field: "savings",
+        headerName: "Savings(Miliseconds)",
         type: "number",
         width: 200
     },
     {
-        field: "totalRountTripTime",
-        headerName: "Total Round trip time",
-        type: "number",
+        field: "recommendation",
+        headerName: "Recommendation",
         width: 200
     },
     {
-        field: "subCategory",
-        headerName: "Sub Category",
+        field: "stakeholders",
+        headerName: "Stakeholders",
         width: 200
     },
+    // {
+    //     field: "successRateDefinition",
+    //     headerName: "Success Rate Definition ",
+    //     type: "number",
+    //     width: 200,
+    //     renderCell: (params) => {
+    //         return params.value ? params.value + "%" : null;
+    //     },
+    // },
+    // {
+    //     field: "varianceToSLA",
+    //     headerName: "Variance to SLA (SRD)",
+    //     type: "number",
+    //     width: 200,
+    //     renderCell: (params) => {
+    //         return params.value ? params.value + "%" : null;
+    //     },
+    // },
+    // {
+    //     field: "rtt95Th",
+    //     headerName: "95th RTT",
+    //     type: "number",
+    //     width: 200
+    // },
+    // {
+    //     field: "volumePerDay",
+    //     headerName: "Average Volume per day",
+    //     type: "number",
+    //     width: 200
+    // },
+    // {
+    //     field: "rountTripTimeWithStargate",
+    //     headerName: "Round Trip Time with Stargate",
+    //     type: "number",
+    //     width: 200
+    // },
+    // {
+    //     field: "totalRountTripTime",
+    //     headerName: "Total Round trip time",
+    //     type: "number",
+    //     width: 200
+    // },
+    // {
+    //     field: "subCategory",
+    //     headerName: "Sub Category",
+    //     width: 200
+    // },
+    // {
+    //     field: "optumPartner",
+    //     headerName: "Optum Partner",
+    //     width: 200
+    // },
+    // {
+    //     field: "optumPartnerEmail",
+    //     headerName: "Optum Partner email ",
+    //     width: 200
+    // },
+    // {
+    //     field: "oDPartner",
+    //     headerName: "OD Partner",
+    //     width: 200
+    // },
+    // {
+    //     field: "oDPartnerEmail",
+    //     headerName: "OD Partner email ",
+    //     width: 200
+    // },
     {
-        field: "optumPartner",
-        headerName: "Optum Partner",
-        width: 200
+        field: "comments",
+        headerName: "Comments",
+        minWidth: 200
     },
     {
-        field: "optumPartnerEmail",
-        headerName: "Optum Partner email ",
-        width: 200
-    },
-    {
-        field: "oDPartner",
-        headerName: "OD Partner",
-        width: 200
-    },
-    {
-        field: "oDPartnerEmail",
-        headerName: "OD Partner email ",
-        width: 200
-    },
-    {
-        field: "actionPlan",
-        headerName: "Action Plan",
+        field: "url",
+        headerName: "URL",
         minWidth: 200
     },
 ];
@@ -198,119 +231,115 @@ const columns = [
 const defaultRows = [
     {
         id: 1,
-        productName: "Identity and Access | Eligibility",
-        apiName: "PlanDetails OBAPI",
-        optumApi: '',
-        errorPercentage: 1.01,
-        successRateDefinition: 0.25,
-        varianceToSLA: 0.76,
-        rtt95Th: 1492.804,
-        volumePerDay: 171333,
-        rountTripTimeWithStargate: 1542.804,
-        totalRountTripTime: null,
-        subCategory: "OBAPI",
-        optumPartner: "Devender Kumar & Josh Nair",
-        optumPartnerEmail: "",
-        oDPartner: "Kris Kohlstedt",
-        oDPartnerEmail: "",
-        actionPlan: "We need Kis K and the core team from Brian to attend this meeting"
+        problemStatement: "Performance improvement",
+        memberExperience: "Login",
+        capability: 'RBA',
+        currentState: 6000,
+        targetState: 2000,
+        savings: 4000,
+        recommendation: 'Migrate RBA to mico-service with HSID and reduce redirects',
+        stakeholders: "Rajagopalan Jayaraman, Sudhashina Pal",
+        comments: "OCIS team will additionally review and identify stop gap measures to improve member experience",
+        url: "https://rba-ose.healthsafe-id.com/aa-web/evaluate?execution=e1s2&action=securityQuestion"
+        
     },
     {
         id: 2,
-        productName: "Platform | Advocacy",
-        apiName: "Omni Chat",
-        optumApi: '',
-        errorPercentage: null,
-        successRateDefinition: null,
-        varianceToSLA: null,
-        rtt95Th: null,
-        volumePerDay: null,
-        rountTripTimeWithStargate: null,
-        totalRountTripTime: null,
-        subCategory: "Optum Omni",
-        optumPartner: "",
-        optumPartnerEmail: "satwant.singh@optum.com",
-        oDPartner: "Charles Lee",
-        oDPartnerEmail: "",
-        actionPlan: "Genyssis architect and the api in question to be forwarded by Kiran"
+        problemStatement: "Performance improvement",
+        memberExperience: "Login",
+        capability: 'Header Footer',
+        currentState: 650,
+        targetState: 100,
+        savings: 550,
+        recommendation: 'Implemenation of Global Nav would result in calling a different library, additionally implementaiont of tag script and removal of standalone libraries',
+        stakeholders: "Sudha Menon, Maria Melnicova",
+        comments: "Implementation of Global Nav for coverage and benefits can be a partial validation of this improvement. BizOps teams will validate.",
+        url: "https://member.uhc.com/shared-header-footer.json"
+        
     },
     {
         id: 3,
-        productName: "Identity and Access | Eligibility",
-        apiName: "PSA OBAPI",
-        actionPlan: ""
+        problemStatement: "Performance improvement",
+        memberExperience: "Login",
+        capability: 'HSID',
+        currentState: 466,
+        targetState: 166,
+        savings: 300,
+        recommendation: 'Domain consolidation will increase performance and result in savings',
+        stakeholders: "Amitava",
+        comments: "Cause: New domain: sso.optum.com",
+        url: ''
+        
     },
     {
         id: 4,
-        productName: "Care | RX",
-        apiName: "ORx Mail Order Cabinet",
-        actionPlan: ""
+        problemStatement: "Performance improvement",
+        memberExperience: "Login",
+        capability: 'Eligibility',
+        currentState: 2000,
+        targetState: 500,
+        savings: 1500,
+        recommendation: '',
+        stakeholders: 'John Paul Perry',
+        comments: 'Met up with Brian Lee from core team who has requested us to meet with John Paul Perry',
+        url: "https://api.member.uhc.com/rest/chat-uhc/speakeasy/v1/member/eligibility"
+        
     },
     {
         id: 5,
-        productName: "Care | RX",
-        apiName: "ORx Claims Cabinet",
-        actionPlan: ""
+        problemStatement: "Performance improvement",
+        memberExperience: "Login",
+        capability: 'Cost Share',
+        currentState: 2000,
+        targetState: 500,
+        savings: 1500,
+        recommendation: '',
+        stakeholders: 'John Paul Perry',
+        comments: 'Met up with Brian Lee from core team who has requested us to meet with John Paul Perry',
+        url: "https://api.member.uhc.com/rest/edge-dashboard/virtualcare/v1/eligibility/4dc3ecc0-e516-447b-8373-40bff9a40137/costshare"
+        
     },
     {
         id: 6,
-        productName: "UHC Navigation | DHP",
-        apiName: "UHC Navigation | DHP",
-        actionPlan: ""
+        problemStatement: "Performance improvement",
+        memberExperience: "Login",
+        capability: 'Fonts',
+        currentState: 2000,
+        targetState: 300,
+        savings: 1700,
+        recommendation: 'Incident ticket is to be raised for the Arcade team in the Token Project for further assessment',
+        stakeholders: 'Sudha Menon, Maria Melnicova',
+        comments: ' ',
+        url: "https://api.member.uhc.com/rest/edge-dashboard/virtualcare/v1/eligibility/4dc3ecc0-e516-447b-8373-40bff9a40137/costshare"
+        
     },
     {
         id: 7,
-        productName: "Care | P4C",
-        apiName: "Provider Demographics",
-        actionPlan: ""
+        problemStatement: "Performance improvement",
+        memberExperience: "Login",
+        capability: 'Assets',
+        currentState: 3000,
+        targetState: 300,
+        savings: 2700,
+        recommendation: 'Incident ticket is to be raised for the Arcade team in the Token Project for further assessment',
+        stakeholders: 'Sudha Menon, Maria Melnicova',
+        comments: ' ',
+        url: "https://api.member.uhc.com/rest/edge-dashboard/virtualcare/v1/eligibility/4dc3ecc0-e516-447b-8373-40bff9a40137/costshare"
+        
     },
     {
         id: 8,
-        productName: "Care | FPC",
-        apiName: "PCP OBAPI",
-        actionPlan: ""
-    },
-    {
-        id: 9,
-        productName: "Care | RX",
-        apiName: "BPE Pricing",
-        actionPlan: ""
-    },
-    {
-        id: 10,
-        productName: "Care | RX",
-        apiName: "ORx Order Details",
-        actionPlan: ""
-    },
-    {
-        id: 11,
-        productName: "UHC Navigation | DHP",
-        apiName: "ID Card OBAPI",
-        actionPlan: ""
-    },
-    {
-        id: 12,
-        productName: "Identity and Access | Accounts",
-        apiName: "Headless HSID",
-        actionPlan: ""
-    },
-    {
-        id: 13,
-        productName: "Care | RX",
-        apiName: "hAPI Family or Profile",
-        actionPlan: ""
-    },
-    {
-        id: 14,
-        productName: "Care | P4C",
-        apiName: "Claims OBAPI",
-        actionPlan: ""
-    },
-    {
-        id: 15,
-        productName: "UHC Navigation | DHP",
-        apiName: "Member Actions OBAPI",
-        actionPlan: ""
+        problemStatement: "Performance improvement",
+        memberExperience: "Login",
+        capability: 'Adobe',
+        currentState: 1000,
+        targetState: 600,
+        savings: 400,
+        recommendation: '',
+        stakeholders: 'Jessica John Kim',
+        comments: '',
+        url: ""
+        
     }
 ];
 
@@ -353,7 +382,7 @@ export default function Content() {
         <React.Fragment>
             <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap'}}>
                 <Typography variant="h5" component="h1" sx={{ fontSize: 25 }}>
-                    Stabi
+                    Analytics
                 </Typography>
                 <TableToolBar>
                     <Grid container alignItems="center">
